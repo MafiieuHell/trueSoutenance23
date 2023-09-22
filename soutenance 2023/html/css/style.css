@@ -1,0 +1,485 @@
+* {
+    box-sizing: border-box;
+}
+
+html {
+    font-size: 62.5%;
+}
+
+body {
+    font-size: 1.6rem;
+}
+
+
+
+
+
+
+/* *****************************************************************
+GENERALITES
+***************************************************************** */
+
+body {
+    font-family: 'Nunito', sans-serif;
+    color: red;
+    font-size: 1.8rem;
+    background-color: black;
+}
+
+.wrapper {
+    max-width: 1500px;
+    margin: auto;
+}
+
+h1,
+h2,
+h3,
+h4,
+nav,
+.logo strong {
+    font-family: 'Fjalla One', sans-serif;
+
+}
+
+a {
+    text-decoration: none;
+}
+
+p {
+    margin: 0 0 1.5rem 0;
+}
+
+ul {
+    padding-left: 0;
+}
+
+img {
+    max-width: 100%;
+    width: auto;
+    height: auto;
+}
+
+/* Gestion du blob qui suit le pointeur  */
+
+#blob {
+    background-color: white;
+    background: linear-gradient( to right,
+    rgb(127, 255, 212),
+    rgb(225, 23, 99));
+    height: 300px;
+    aspect-ratio: 1;
+    position: fixed;
+    left: 20%;
+    top: 50%;
+    translate: -50% -50%;
+    border-radius: 50%;
+
+    animation: rotate 20s infinite;
+    z-index: -2;
+}
+
+/* animation du blob */
+
+@keyframes rotate {
+    from {
+        rotate: 0deg;
+    }
+
+    50% {
+        scale: 1 1.5;
+    }
+    to {
+        rotate: 360deg;
+    }
+}
+
+/* Gestion du flou du background*/
+
+#blur {
+    height: 100%;
+    width: 100%;
+    position: fixed;
+    z-index: -1;
+    backdrop-filter: blur(200px);
+
+}
+
+/* *****************************************************************
+HEADER
+***************************************************************** */
+
+header .wrapper {
+    padding: 2rem;
+}
+
+header img {
+    margin-bottom: .5rem;
+
+    width: 50%;
+}
+
+.logo {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+}
+
+
+
+.logo strong {
+    font-size: 2.2rem;
+    font-weight: normal;
+    color: white;
+}
+
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+nav a {
+    font-size: 2.5rem;
+    background: -webkit-radial-gradient(#ba6fc4, #8fda22);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+
+
+}
+
+
+nav ul {
+    display: flex;
+    list-style: none;
+    font-size: 2rem;
+}
+
+nav li a {
+    padding: 1rem 2rem;
+    margin-left: 3rem;
+}
+
+nav li a:hover,
+.current {
+    background-color: #fff;
+    color: #00748D;
+}
+
+/* *****************************************************************
+MAIN
+***************************************************************** */
+
+.intro {
+    /*background: url(../img/bg-header.png) left center;*/
+    /*background-size: cover;*/
+    padding: 15rem 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+h1 {
+    background: linear-gradient(39deg, rgb(14 16 14), rgb(53 17 17), rgb(10 10 49), rgb(55 46 45));
+    background-size: 400% 400%;
+    animation: gradient 15s ease infinite;
+
+    font-size: 3rem;
+    text-transform: uppercase;
+    color: white;
+    display: inline-block;
+    margin-bottom: 3rem;
+    padding: 1.5rem 2rem;
+}
+
+
+
+.intro p {
+    background: linear-gradient(220deg, rgb(14 16 14), rgb(53 17 17), rgb(10 10 49), rgb(55 46 45));
+    background-size: 400% 400%;
+    animation: gradient 15s ease infinite;
+
+    font-weight: bold;
+
+    font-size: 2rem;
+    display: inline-block;
+    padding: 1rem 3rem;
+}
+
+@keyframes gradient {
+    0% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+    100% {
+        background-position: 0% 50%;
+    }
+}
+
+
+
+/********** articles **********/
+
+section {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    padding: 0 2rem;
+}
+
+h2 {
+    font-family: 'Raleway', sans-serif;
+    font-size: 2.5rem;
+
+    text-align: center;
+    margin: 7rem 0 5rem 0;
+    flex: 1 0 100%;
+}
+
+
+
+article {
+
+    line-height: 1.5;
+    background-color: rgb(255, 255, 255, 0.4);
+    padding: 2rem;
+}
+
+h3 {
+    font-size: 2rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+article>h3,
+article>p {
+    color: blue;
+}
+
+h3::before {
+    font-family: "Font Awesome 5 Free";
+    font-weight: 600;
+    font-size: 3rem;
+    background-color: #CB8606;
+    color: white;
+    padding: 1rem 2rem;
+    margin-bottom: 2rem;
+}
+
+.charges::before {
+    content: "\f02d";
+}
+
+.shopping::before {
+    content: "\f07a";
+}
+
+.suivi::before {
+    content: "\f00c";
+}
+
+.cle::before {
+    content: "\f084";
+}
+
+article {
+    width: 24%;
+}
+
+.pringles {
+    text-align: center;
+}
+
+
+
+.plus {
+    background-color: #00748D;
+    color: white;
+    font-weight: bold;
+    display: block;
+    text-align: center;
+    padding: 1rem 2rem;
+    margin: 2rem;
+}
+
+
+/********************Pop-up*******************/
+
+#overlay {
+    display: none;
+    position: absolute;
+
+    z-index: 100;
+}
+
+#popup {
+    display: none;
+    position: absolute;
+
+    z-index: 200;
+}
+
+#popupclose {
+    float: right;
+    padding: 10px;
+    cursor: pointer;
+}
+
+.popupcontent {
+    padding: 10px;
+}
+
+#button {
+    cursor: pointer;
+}
+
+
+
+
+
+/* *****************************************************************
+FOOTER
+***************************************************************** */
+
+footer {
+
+    background-position: 0 bottom;
+    margin-top: 5rem;
+}
+
+footer .wrapper {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 4rem 2rem;
+}
+
+footer img {
+    margin-right: 1rem;
+    max-width: 50%;
+}
+
+footer a {
+    color: white;
+}
+
+.reseaux {
+    display: flex;
+}
+
+.reseaux a {
+    margin: 0 1rem;
+    font-size: 3rem;
+}
+
+.reseaux a:hover,
+.reseaux a:focus {
+    color: rgb(163 16 37);
+}
+
+.form {
+
+    text-align: center;
+    margin: 3rem;
+
+    color: white;
+}
+
+form {
+    border-bottom: 50px;
+}
+
+/* *****************************************************************
+TABLETTE
+***************************************************************** */
+
+@media screen and (max-width: 1100px) {
+    nav {
+        margin-top: 3rem;
+        flex-direction: column;
+        align-items: center;
+    }
+    nav ul {
+        margin-top: 5rem;
+        justify-content: space-around;
+        width: 100%;
+    }
+    .logo {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+    strong {
+        margin-top: 1rem;
+    }
+    article,
+    .pringles {
+        width: 49%;
+        margin-bottom: 4rem;
+    }
+    .plus {
+        margin: 2rem 5rem;
+    }
+
+
+    /* *****************************************************************
+MOBILE
+***************************************************************** */
+    @media screen and (max-width: 780px) {
+        .intro p {
+            font-size: 2rem;
+            margin: 0 8rem;
+            padding: 1rem;
+            text-align: center;
+        }
+        article,
+        .pringles {
+            width: 100%;
+        }
+        .plus {
+            margin: 2rem 10rem;
+        }
+        aside {
+            flex-direction: column;
+        }
+
+        footer .wrapper {
+            flex-direction: column-reverse;
+        }
+        footer .logo {
+            flex-direction: column;
+            align-items: center;
+        }
+        .reseaux {
+            margin: 3rem;
+        }
+    }
+
+    /* *****************************************************************
+PETITS MOBILES
+***************************************************************** */
+    @media screen and (max-width: 630px) {
+        nav ul {
+            flex-direction: column;
+            align-items: center;
+        }
+        nav li {
+            width: 100%;
+        }
+        nav li a {
+            display: block;
+            text-align: center;
+            border-top: 1px solid transparent;
+            border-bottom: 1px solid transparent;
+            margin-left: 0;
+        }
+        nav li a:hover {
+            border-top: 1px solid #00748D;
+            border-bottom: 1px solid #00748D;
+        }
+
+    }
