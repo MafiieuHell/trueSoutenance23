@@ -10,12 +10,12 @@ if(!empty($_POST)){
     //form envoyé
     //verif des champs
     if(isset($_POST["email"], $_POST["pass"])
-    && !empty($_POST["email"] && !empty($_POST["pass"]))
+        && !empty($_POST["email"] && !empty($_POST["pass"]))
     ){
         $_SESSION["error"] = [];
         //verif email
         if(!filter_var($_POST["email"], FILTER_VALIDATE_EMAIL)){
-            $_SESSION["error"] = "ce nest pas un email";
+            $_SESSION["error"][] = "ce nest pas un email";
         }
 
         if($_SESSION["error"] === [])
@@ -34,26 +34,36 @@ if(!empty($_POST)){
             
             $user = $q->fetch();
 
-            if(!$user){
+           
+            //verification du user
+            if($user){
+                // user exist
+                //verification du mdp de user
+                if(password_verify($_POST["pass"], $user["pass"])){
+                    //le mdp est bon
+                    
+                    //stockage des info du user
+                    $_SESSION["user"] = [
+                        "id" => $user["id"],
+                        "pseudo" => $user["username"],
+                        "email" => $user["email"],
+                        "role" => $user["roles"]
+                    ];
+        
+                    
+                   
+                        //on redigire vers une page 
+                        header("Location: profil.php"); 
+                }else{
+                    //mdp faux
+                    $_SESSION["error"][] = "mdp ou user incorecte";
+                }
+                
+            }else{
+                //user inexistant
                 $_SESSION["error"][] = "mdp ou user incorecte";
             }
-            //verif du mdp
-            if(!password_verify($_POST["pass"], $user["pass"])){
-                $_SESSION["error"][] = "mdp ou user incorecte";
-            }
-            //info sont bonnes
-
-
-            //stockage des info user
-            $_SESSION["user"] = [
-                "id" => $user["id"],
-                "pseudo" => $user["username"],
-                "email" => $user["email"],
-                "role" => $user["roles"]
-            ];
-
-            //on redigire vers une page 
-            header("Location: profil.php");
+            
         }
     }
 }
